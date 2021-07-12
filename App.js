@@ -1,59 +1,93 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 
 export default function App() {
-  const [user, setUser] = useState ("Lando")
-  const [knowledge, setStudies] = useState({ study: "trader", phase: "entrenamiento" })
-  const pressHandler = () =>{
-    setUser("Elisa")
-    setStudies({ study: "repostera", phase: "modo profesional" })
-  }
-  
+  const [todos, setTodos] = useState ([{
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "quis ut nam facilis et officia qui",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 3,
+    "title": "fugiat veniam minus",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 4,
+    "title": "et porro tempora",
+    "completed": true
+  },
+  {
+    "userId": 1,
+    "id": 5,
+    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 6,
+    "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 7,
+    "title": "illo expedita consequatur quia in",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 8,
+    "title": "quo adipisci enim quam ut ab",
+    "completed": true
+  },
+  {
+    "userId": 1,
+    "id": 9,
+    "title": "molestiae perspiciatis ipsa",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 10,
+    "title": "illo est ratione doloremque quia maiores aut",
+    "completed": true
+  }])
+
   return (
     <View style={styles.container}>
-      <Text style={styles.mytext}>{user} es {knowledge.study} en {knowledge.phase}</Text>
-      <TextInput style={styles.textInput}
-        placeholder = "Enter the user name"
-        onChange ={e => setUser(e.target.value)}
-      />
-      <TextInput style={styles.textInput}
-        placeholder = "Enter the user studies"
-        onChange ={e => setStudies({ ...knowledge, study: e.target.value })}
-      />
-      <TextInput style={styles.textInput}
-        placeholder = "Enter the user grade"
-        onChange ={e => setStudies({ ...knowledge, phase: e.target.value })}
-      />
-      <View style={styles.buttonStyle}>
-        <Button title='Update'
-          onPress = {pressHandler}
-        />
-      </View>
-      <StatusBar style = 'auto' />
+      <ScrollView>
+      {todos.map(todo =>
+        <View key = {todo.id} style = {styles.todo}>
+          <Text>{todo.title}</Text>
+        </View>
+      )}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    //alignItems: 'center',
     backgroundColor: '#fff',
     flex: 1,
-    justifyContent: 'center'
+    //justifyContent: 'center'
   },
-  buttonStyle: {
-    margin: 5
-  },
-  mytext: {
-    fontSize: 20
-  },
-  textInput: {
-    borderColor: 'black',
-    borderWidth: 1,
-    height: 50,
-    margin: 3,
-    padding: 5,
-    width: '70%'
+  todo: {
+    margin: 20,
+    backgroundColor: 'pink',
+    color: 'white',
+    fontSize: 20,
+    padding: 20
   }
 });
