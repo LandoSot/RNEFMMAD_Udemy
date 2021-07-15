@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
+  const pressHandler = (id) =>{
+    const selectItem = (todos.filter(todo => todo.id === id))[0]
+    alert(selectItem.title)
+  }
   const [todos, setTodos] = useState ([{
     "userId": 1,
     "id": 1,
@@ -70,7 +74,9 @@ export default function App() {
         keyExtractor={(item) => item.id.toString()}
         data={todos}
         renderItem={({item}) =>(
-          <Text style = {styles.todo}>{item.title}</Text>
+          <TouchableOpacity style = {styles.touch} onPress = {()=>pressHandler(item.id)}>
+            <Text style = {styles.todo}>{item.title}</Text>
+          </TouchableOpacity>
         )}
       />
       {/* <ScrollView>
@@ -94,10 +100,13 @@ const styles = StyleSheet.create({
   },
   todo: {
     margin: 5,
-    backgroundColor: 'pink',
+    backgroundColor: 'deeppink',
     color: 'white',
     fontSize: 10,
     padding: 10,
-    width: '30%'
+    height: 80,
   },
+  touch: {
+    width: '30%',
+  }
 });
