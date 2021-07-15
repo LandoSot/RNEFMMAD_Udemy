@@ -3,8 +3,13 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 
 export default function App() {
   const pressHandler = (id) =>{
-    const selectItem = (todos.filter(todo => todo.id === id))[0]
-    alert(selectItem.title)
+    let returnValue = [...todos]
+    returnValue.forEach(todo => {
+      if(todo.id===id){
+        todo.completed = true
+      }
+    })
+    setTodos(returnValue)
   }
   const [todos, setTodos] = useState ([{
     "userId": 1,
@@ -75,7 +80,10 @@ export default function App() {
         data={todos}
         renderItem={({item}) =>(
           <TouchableOpacity style = {styles.touch} onPress = {()=>pressHandler(item.id)}>
-            <Text style = {styles.todo}>{item.title}</Text>
+            <Text style = {{
+              ...styles.todo,
+              backgroundColor : item.completed? 'green' : 'deeppink'
+            }}>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
@@ -96,11 +104,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     flex: 1,
-    //justifyContent: 'center'
+    justifyContent: 'center'
   },
   todo: {
     margin: 5,
-    backgroundColor: 'deeppink',
     color: 'white',
     fontSize: 10,
     padding: 10,
