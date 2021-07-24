@@ -1,11 +1,11 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, Text, View } from "react-native"
+import {StyleSheet, Text, View } from "react-native"
 
 const Header = () => {
     return (
-        <SafeAreaView style={styles.header}>
+        <View style={styles.header}>
             <Text style={styles.title}>LSC Mobile Tasks</Text>
-        </SafeAreaView>
+        </View>
     )
 }
 
