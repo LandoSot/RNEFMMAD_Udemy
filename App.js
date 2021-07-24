@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from './components/Header';
+import Task from './components/Task';
 
 export default function App() {
   const [tasks, setTast] = useState([
@@ -21,7 +22,7 @@ export default function App() {
           <FlatList
             data = {tasks}
             renderItem={({ item }) => (
-              <Text>{item.task}</Text>
+              <Task item={item} />
             )}
           />
         </View>
