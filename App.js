@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
-//import { SafeAreaView } from 'react-native-safe-area-context';
+import { Alert, FlatList, Keyboard, StatusBar, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from './components/Header';
 import Task from './components/Task';
 import AddTask from './components/AddTask';
@@ -32,20 +32,22 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Header/>
-      <View style={styles.content}>
-        <AddTask addTask={addTask}/>
-        <View style={styles.list}>
-          <FlatList
-            data = {tasks}
-            renderItem={({ item }) => (
-              <Task item={item} />
-            )}
-          />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={styles.container}>
+        <Header/>
+        <View style={styles.content}>
+          <AddTask addTask={addTask}/>
+          <View style={styles.list}>
+            <FlatList
+              data = {tasks}
+              renderItem={({ item }) => (
+                <Task item={item} />
+              )}
+            />
+          </View>
         </View>
-      </View>
-    </View>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 
