@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, StatusBar, StyleSheet, Text, View } from 'react-native';
 //import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from './components/Header';
 import Task from './components/Task';
@@ -18,12 +18,17 @@ export default function App() {
     ])
 
   const addTask = (text) =>{
-    setTasks(prevTasks =>{
-      return [{
-        task:text, id:uuidv4()},
-        ...prevTasks
-      ]
-    })
+    if (!text){
+      Alert.alert('No task?', 'Please type some task to add them to the list')
+    }
+    else {
+      setTasks(prevTasks =>{
+        return [{
+          task:text, id:uuidv4()},
+          ...prevTasks
+        ]
+      })
+    }
   }
 
   return (
