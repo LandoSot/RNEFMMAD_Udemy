@@ -1,6 +1,6 @@
 import React from 'react'
-import Home from '../screens/Home'
-import Task from '../components/Task'
+import HomeR from '../screens/HomeR'
+import TaskR from '../screens/TasksR'
 import { createStackNavigator } from '@react-navigation/stack'
 
 const Stack = createStackNavigator ();
@@ -8,8 +8,8 @@ const Stack = createStackNavigator ();
 const MyRoutes = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name = 'Home' component={Home}/>
-      <Stack.Screen name = 'Task' component={Task}/>
+      <Stack.Screen name = 'Home' component={HomeR}/>
+      <Stack.Screen name = 'Task' component={TaskR}/>
     </Stack.Navigator>
   )
 }

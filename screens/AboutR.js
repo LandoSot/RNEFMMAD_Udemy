@@ -2,12 +2,12 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { global } from '../styles/Global'
 
-const Tasks = () => {
+const AboutR = () => {
   return (
     <View style={global.container}>
-      <Text>Tasks</Text>
+      <Text>About</Text>
     </View>
   )
 }
 
-export default Tasks
+export default AboutR
