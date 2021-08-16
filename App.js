@@ -1,12 +1,11 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import MyRoutes from './routes/MyRoutes';
 import { NavigationContainer } from '@react-navigation/native';
+import MyDrawer from './routes/MyDrawer';
 
 export default function App(){
   return(
     <NavigationContainer> 
-      <MyRoutes/>
+      <MyDrawer/>
     </NavigationContainer>
   );
 }
