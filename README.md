@@ -90,6 +90,24 @@ The code needs to use a tag called *SafeAreaView*, a container that help to our 
 
 Follow the instructions of ***[this](https://docs.expo.io/versions/latest/sdk/safe-area-context/?redirected "SafeAreaContext for Android")*** page to include it.
 
+### Fix error dedupe
+If you are getting error of register 2 times any component, follow the next steps (***safe-area-context*** in this case):
+
+1. Deleted node_modules and package.lock or yarn.lock
+   - If you have both files (package.lock and yarn.lock) you should use just one, I personally recommend yarn.lock
+2. Deleted react-native-safe-area-context from Package.json
+3. Execute `yarn install`
+4.
+    - In the Expo managed workflow:
+    `expo install react-native-safe-area-view react-native-safe-area-context`
+    - In bare React Native projects:
+    `yarn add react-native-safe-area-view react-native-safe-area-context`
+- If you're using expo, try again at this point, this should be enough to continue. Otherwise, follow the next steps.
+5. Next, you need to link react-native-safe-area-context. If you are using autolinking, run npx pod-install again. If not, follow [these instructions.](https://github.com/react-navigation/react-native-safe-area-view "Linking Safe Area Context")
+6. Cleaned Xcode Build folder.
+7. Used new simulator without cache.
+8. Build with Xcode.
+
 ### ID Generator
 
 To generate random id's in android, you also need some extra help, in this case the use of UUID.
