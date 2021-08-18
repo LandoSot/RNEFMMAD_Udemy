@@ -2,6 +2,7 @@ import React from 'react'
 import HomeR from '../screens/HomeR'
 import TaskR from '../screens/TasksR'
 import AboutR from '../screens/AboutR'
+import Bitacora from '../screens/Bitacora'
 import RenderTasksR from '../screens/RenderTasksR'
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -35,4 +36,12 @@ const HomeStack = () => {
   )
 }
 
-export {AboutStack, HomeStack}
+const BitacoraStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name = 'Bitacora' component = {Bitacora}/>
+    </Stack.Navigator>
+  )
+}
+
+export {AboutStack, BitacoraStack, HomeStack}
