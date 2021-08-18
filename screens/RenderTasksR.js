@@ -12,7 +12,7 @@ const RenderTasksR = ({ navigation, route} ) => {
 
   return (
     <View style={global.container}>
-      <Text>{route.params.task}</Text>
+      <Text>{route.name}</Text>
       <View styles={global.buttonsRow}>
         <Button title='Back to Tasks' onPress={goToTask} />
         <Button title='Home' onPress={goToHome} color='green'/>
