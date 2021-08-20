@@ -29,8 +29,8 @@ const HomeStack = () => {
       <Stack.Screen name = 'Task' component={TaskR} />
       <Stack.Screen 
         name = 'RenderTasks' 
-        component={RenderTasksR}
-        options={({route}) => ({title: route.params.task})}
+        component = {RenderTasksR}
+        options = {({route}) => ({title: route.params.task})}
       />
     </Stack.Navigator>
   )

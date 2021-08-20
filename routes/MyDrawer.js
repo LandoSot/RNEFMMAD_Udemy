@@ -7,8 +7,14 @@ const MyDrawer = () => {
   const Drawer = createDrawerNavigator ()
   return (
     <Drawer.Navigator screenOptions={{headerShown: false}}>
-      <Drawer.Screen name = 'Home' component={HomeTab} />
-      <Drawer.Screen name = 'About' component={AboutStack} />
+      <Drawer.Screen 
+        name = 'HomeDrawer' component={HomeTab} 
+        options={{drawerLabel:'Home'}}
+      />
+      <Drawer.Screen 
+        name = 'AboutDrawer' component={AboutStack}
+        options = {{drawerLabel:'About'}}
+      />
     </Drawer.Navigator>
   )
 }
