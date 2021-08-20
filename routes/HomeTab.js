@@ -6,8 +6,14 @@ const HomeTab = () => {
   const Tab = createBottomTabNavigator()
   return (
     <Tab.Navigator screenOptions={{headerShown: false}}>
-      <Tab.Screen name='Home' component={HomeStack} />
-      <Tab.Screen name='Bitacora' component={BitacoraStack} />
+      <Tab.Screen 
+        name = 'HomeTabBar' component = {HomeStack}
+        options = {{tabBarLabel:'Home'}}  
+      />
+      <Tab.Screen 
+        name = 'BitacoraTabBar' component = {BitacoraStack}
+        options = {{tabBarLabel:'Bitácora'}}
+      />
     </Tab.Navigator>
   )
 }
