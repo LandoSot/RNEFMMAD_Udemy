@@ -1,13 +1,15 @@
 import { ADD_TASK, DELETE_TASK, DID_TASK } from "./taskTypes";
 
 const initialState = {
-  task: [
+  tasks: [
     {"task":"HTML I","done":false, "id":"1"},
     {"task":"CSS","done":false, "id":"2"},
     {"task":"Responsive design","done":false, "id":"3"},
     {"task":"Git","done":false, "id":"4"},
     {"task":"JavaScript I","done":false, "id":"5"},
-    {"task":"JavaScript II","done":false, "id":"6"}
+    {"task":"JavaScript II","done":false, "id":"6"},
+    {"task":"React Native","done":false, "id":"7"},
+    {"task":"Stack Navigation","done":false, "id":"8"}
   ]
 }
 
