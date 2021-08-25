@@ -2,18 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import { Button, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { global } from '../styles/Global'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addTask, deleteTask } from '../store/taskAction'
 
 const TasksR = ({navigation}) => {
   const goToHome = () =>{
     navigation.goBack()
   }
 
+  const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks)
   const [text, setText] = useState ('')
-  const changeHandler = (val) => {
-    setText(val)
-  }
+  const changeHandler = (val) => { setText(val) }
+  const submitTask = (text) => dispatch(addTask(text))
 
   return (
     <View style={global.container}>
@@ -26,7 +27,7 @@ const TasksR = ({navigation}) => {
       <Button 
         title='Add task'
         onPress={() =>
-          addTask(text)
+          submitTask(text)
         }
       />
       <FlatList

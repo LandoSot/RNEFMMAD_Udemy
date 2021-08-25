@@ -22,7 +22,7 @@ const taskReducer = (state = initialState, action) => {
           {
             task: action.payload,
             done: false,
-            id: Math.random()
+            id: Math.random().toString()
           }
         ]
       }
