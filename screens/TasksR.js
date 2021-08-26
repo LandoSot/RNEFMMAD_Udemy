@@ -15,6 +15,7 @@ const TasksR = ({navigation}) => {
   const [text, setText] = useState ('')
   const changeHandler = (val) => { setText(val) }
   const submitTask = (text) => dispatch(addTask(text))
+  const removeTask = id => dispatch(deleteTask(id))
 
   return (
     <View style={global.container}>
@@ -33,10 +34,12 @@ const TasksR = ({navigation}) => {
       <FlatList
         data={tasks}
         renderItem={({ item }) => (
-        <TouchableOpacity onPress={()=>
+        <TouchableOpacity style={global.list} onPress={()=>
           navigation.navigate('RenderTasks', item)
         }>
-          <Text style={global.list}>{item.task}</Text>
+          <Text>{item.task}</Text>
+          <Button title = 'Delete'
+          onPress = {() => removeTask(item.id)}/>
         </TouchableOpacity>
        )} 
       />
