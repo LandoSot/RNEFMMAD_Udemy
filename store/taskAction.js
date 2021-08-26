@@ -10,9 +10,9 @@ const deleteTask = id => ({
   payload: id
 })
 
-const didTask = task => ({
+const didTask = id => ({
   type: DID_TASK,
-  payload: task
+  payload: id
 })
 
 export { addTask, deleteTask, didTask }
