@@ -3,6 +3,7 @@ import HomeR from '../screens/HomeR'
 import TaskR from '../screens/TasksR'
 import AboutR from '../screens/AboutR'
 import Bitacora from '../screens/Bitacora'
+import DoneTasks from '../screens/DoneTasks'
 import RenderTasksR from '../screens/RenderTasksR'
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -44,4 +45,12 @@ const BitacoraStack = () => {
   )
 }
 
-export {AboutStack, BitacoraStack, HomeStack}
+const DoneTasksStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name = 'DoneTasks' component = {DoneTasks}/>
+    </Stack.Navigator>
+  )
+}
+
+export {AboutStack, BitacoraStack, DoneTasksStack, HomeStack}
