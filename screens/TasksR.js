@@ -4,6 +4,7 @@ import { Button, FlatList, Text, TextInput, TouchableOpacity, View } from 'react
 import { global } from '../styles/Global'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTask, deleteTask, didTask } from '../store/taskAction'
+import { AntDesign } from '@expo/vector-icons'
 
 const TasksR = ({navigation}) => {
   const goToHome = () =>{
@@ -35,18 +36,21 @@ const TasksR = ({navigation}) => {
       <FlatList
         data={tasks}
         renderItem={({ item }) => (
-        <TouchableOpacity style={global.list} onPress={()=>
-          navigation.navigate('RenderTasks', item)
-        }>
-          <Text 
+        <View style = {global.tasksZone}>
+          <AntDesign 
+            name={item.done ? 'checkcircle' : 'checkcircleo'} size={24} color="black" 
             onPress = {() => finishTask(item.id)}
-            style = {item.done ? null: {fontWeight: 'bold'}}
-          >
-            {item.task}
-          </Text>
-          <Button title = 'Delete'
-          onPress = {() => removeTask(item.id)}/>
-        </TouchableOpacity>
+          />
+          <TouchableOpacity 
+            style = {global.pressZone}
+            onPress = {() => navigation.navigate('RenderTasks', item)}>
+            <Text style = {item.done ? null:{fontWeight:'bold'}}>{item.task}</Text>
+          </TouchableOpacity>
+          <AntDesign 
+            name="delete" size={24} color="black" 
+            onPress = {() => removeTask(item.id)}
+          />
+        </View>
        )} 
       />
       <Button title='Back to Home' onPress={goToHome}/>
