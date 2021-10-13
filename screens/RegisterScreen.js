@@ -84,10 +84,10 @@ const RegisterScreen = () => {
         </View>
       </View>
 
-      <View style = {styles.formsViewsButtons}>
+      <View style = {{marginTop: '2%'}}>
         <Button mode = 'contained' color = 'brown'
           onPress={() => console.log('Registrando')}
-          style = {{margin: '10%'}}
+          style = {{margin: '4%', width: '100%'}}
         >
           Registrarse
         </Button>
