@@ -1,14 +1,40 @@
 import React, { useState } from 'react'
 import { View, SafeAreaView, StatusBar, StyleSheet, ScrollView } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
+import { FontAwesome } from '@expo/vector-icons';
+import { auth } from '../Firebase'
 
-const RegisterScreen = () => {
+
+const RegisterScreen = ({navigation}) => {
   let initialState = ''
   const [email, setEmail] = useState(initialState)
   const [password, setPassword] = useState(initialState)
   const [confPassword, setConfPassword] = useState(initialState)
-  const [firstName, setFirstName] = useState(initialState)
-  const [lastName, setLastName] = useState(initialState)
+  const [userName, setUsertName] = useState(initialState)
+
+  const register = () => {
+    auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      //Signed in
+      var user = userCredential.user;
+      user.updateProfile({
+        displayName: userName,
+        photoURL: 'https://freesvg.org/img/abstract-user-flat-1.png'
+      }).then(() => {
+        // Update successful
+        navigation.goBack()
+        alert('Cuenta creada correctamente, por favor inicia sesión')
+      }).catch((error) => {
+        // An error occurred
+      });  
+      //...
+    })
+    .catch((error) => {
+      var errorMessage = error.message;
+      alert(errorMessage)
+      //..
+    })
+  }
 
   return (
     <ScrollView>
@@ -59,35 +85,23 @@ const RegisterScreen = () => {
 
         <View style = {styles.formViewsInputs}>
           <Text style = {styles.formTexts}>
-            Nombre(s)
+            Nombre de Usuario
           </Text>
           <TextInput
             mode = 'outlined'
             style = {styles.formInputs}
-            value = {firstName}
-            onChangeText = {text => setFirstName(text)}
+            value = {userName}
+            onChangeText = {text => setUsertName(text)}
             placeholder = 'Juan Antonio'
           />
         </View>
 
-        <View style = {styles.formViewsInputs}>
-          <Text style = {styles.formTexts}>
-            Apellidos
-          </Text>
-          <TextInput
-            mode = 'outlined'
-            style = {styles.formInputs}
-            value = {lastName}
-            onChangeText = {text => setLastName(text)}
-            placeholder = 'Perez Andrade'
-          />
-        </View>
       </View>
 
-      <View style = {styles.formsViewsButtons}>
+      <View style = {{marginTop: '2%'}}>
         <Button mode = 'contained' color = 'brown'
-          onPress={() => console.log('Registrando')}
-          style = {{margin: '10%'}}
+          onPress={register}
+          style = {{margin: '4%', width: '100%'}}
         >
           Registrarse
         </Button>
